@@ -117,9 +117,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
+})({"node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
 
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
+},{}],"node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -328,7 +328,7 @@ process.chdir = function (dir) {
 process.umask = function () {
   return 0;
 };
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/path-browserify/index.js":[function(require,module,exports) {
+},{}],"node_modules/path-browserify/index.js":[function(require,module,exports) {
 var process = require("process");
 // .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
 // backported and transplited with Babel, with backwards-compat fixes
@@ -633,7 +633,7 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-},{"process":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"node_modules/dotenv/lib/main.js":[function(require,module,exports) {
+},{"process":"node_modules/process/browser.js"}],"node_modules/dotenv/lib/main.js":[function(require,module,exports) {
 var process = require("process");
 /*::
 
@@ -763,7 +763,7 @@ function config(options
 
 module.exports.config = config;
 module.exports.parse = parse;
-},{"fs":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js","path":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/path-browserify/index.js","process":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"node_modules/core-js/modules/_global.js":[function(require,module,exports) {
+},{"fs":"node_modules/parcel-bundler/src/builtins/_empty.js","path":"node_modules/path-browserify/index.js","process":"node_modules/process/browser.js"}],"node_modules/core-js/modules/_global.js":[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -794,7 +794,7 @@ module.exports = !require('./_fails')(function () {
 });
 
 },{"./_fails":"node_modules/core-js/modules/_fails.js"}],"node_modules/core-js/modules/_core.js":[function(require,module,exports) {
-var core = module.exports = { version: '2.6.9' };
+var core = module.exports = { version: '2.6.10' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 },{}],"node_modules/core-js/modules/_is-object.js":[function(require,module,exports) {
@@ -7880,7 +7880,7 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 },{}],"node_modules/core-js/library/modules/_core.js":[function(require,module,exports) {
-var core = module.exports = { version: '2.6.9' };
+var core = module.exports = { version: '2.6.10' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 },{}],"node_modules/core-js/library/modules/_a-function.js":[function(require,module,exports) {
@@ -8153,222 +8153,303 @@ var _require = require('@blockmason/link-sdk'),
 var fetch = require('node-fetch');
 
 var project = link({
-  clientId: "xIQD-Ke5E9OVGilttPT5-8noj7CBbppH-Haa2UOqF9s",
-  clientSecret: "bWUVHLi3MdckDXDste1GTIzZ5sf/su65CswKuxFrx+QCKUcjFaVwmngB9hlX+3H"
+  clientId: "ucdcCPBkY5CeYuEvPpBnUVQprnf1TtQmcfP_vEQNpGM\"",
+  clientSecret: "/viNhXYaHo7dQBv7q4kWqu9VPs7PBXU7K8uUiem5kvrJO4KVEyqXtMvgyP7eMS0"
 }, {
   fetch: fetch
 }); //When Document Ready
 
-document.addEventListener("DOMContentLoaded", function (event) {
-  feed = document.getElementById('feed');
-  textArea = document.getElementById("textarea");
-  profileImage = document.getElementById("profile-image");
-  profileUsername = document.getElementById("user-name");
-  profilePosts = document.getElementById("number-of-posts");
+document.addEventListener("DOMContentLoaded",
+/*#__PURE__*/
+function () {
+  var _ref = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee8(event) {
+    var getMessages, _getMessages, formatMessages, _formatMessages, postMessage, _postMessage, setProfile, _setProfile, getProfile, _getProfile, printProfile, _printProfile, printMessages, removeMessages, submitText;
 
-  document.getElementById("submitMessage").onclick = function () {
-    submitText();
-  }; // For this demo we set the user to user 0
+    return regeneratorRuntime.wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            submitText = function _ref17() {
+              if (textArea.value.trim() != "") {
+                messageObject = textArea.value.trim();
+                postMessage(messageObject);
+                textArea.value = "";
+              }
+            };
+
+            removeMessages = function _ref16() {
+              console.log('Cleared All Messages');
+
+              while (feed.firstChild) {
+                feed.removeChild(feed.firstChild);
+              }
+            };
+
+            printMessages = function _ref15() {
+              //Update the number of posts
+              profilePosts.innerText = "Number of Posts: " + messageArray.length;
+              messageArray.forEach(
+              /*#__PURE__*/
+              function () {
+                var _ref2 = _asyncToGenerator(
+                /*#__PURE__*/
+                regeneratorRuntime.mark(function _callee(message) {
+                  var messageUser, messageText, divElement, pElement, messagesFormated;
+                  return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          messageUser = document.createTextNode(currentUserDisplayName);
+                          messageText = document.createTextNode('"' + message.message + '" — ');
+                          divElement = document.createElement("DIV");
+                          pElement = document.createElement("P");
+                          messagesFormated = divElement.appendChild(pElement);
+                          messagesFormated.appendChild(messageText);
+                          messagesFormated.appendChild(messageUser);
+                          feed.appendChild(messagesFormated);
+
+                        case 8:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee);
+                }));
+
+                return function (_x5) {
+                  return _ref2.apply(this, arguments);
+                };
+              }());
+            };
+
+            _printProfile = function _ref14() {
+              _printProfile = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee7() {
+                var profileData, profileDisplayName;
+                return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                  while (1) {
+                    switch (_context7.prev = _context7.next) {
+                      case 0:
+                        _context7.next = 2;
+                        return getProfile(currentUser);
+
+                      case 2:
+                        profileData = _context7.sent;
+                        currentUserDisplayName = profileData.displayName;
+                        profileDisplayName = document.createTextNode(currentUserDisplayName);
+                        profileImage.style.cssText = "background-image: url(" + profileData.avatarUrl + ")";
+                        profileUsername.appendChild(profileDisplayName);
+
+                      case 7:
+                      case "end":
+                        return _context7.stop();
+                    }
+                  }
+                }, _callee7);
+              }));
+              return _printProfile.apply(this, arguments);
+            };
+
+            printProfile = function _ref13() {
+              return _printProfile.apply(this, arguments);
+            };
+
+            _getProfile = function _ref12() {
+              _getProfile = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee6(userID) {
+                var profileData;
+                return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                  while (1) {
+                    switch (_context6.prev = _context6.next) {
+                      case 0:
+                        _context6.next = 2;
+                        return project.get('/getProfile', {
+                          "id": userID
+                        });
+
+                      case 2:
+                        profileData = _context6.sent;
+                        return _context6.abrupt("return", profileData);
+
+                      case 4:
+                      case "end":
+                        return _context6.stop();
+                    }
+                  }
+                }, _callee6);
+              }));
+              return _getProfile.apply(this, arguments);
+            };
+
+            getProfile = function _ref11(_x4) {
+              return _getProfile.apply(this, arguments);
+            };
+
+            _setProfile = function _ref10() {
+              _setProfile = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee5(idOfProfile) {
+                var profilePost;
+                return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                  while (1) {
+                    switch (_context5.prev = _context5.next) {
+                      case 0:
+                        // Set some profile settings for the demo
+                        profilePost = {
+                          "id": idOfProfile,
+                          "displayName": "Mason Link",
+                          "avatarUrl": 'https://blockmason.link/wp-content/uploads/2019/04/download.jpg'
+                        };
+                        _context5.next = 3;
+                        return project.post('/setProfile', profilePost);
+
+                      case 3:
+                      case "end":
+                        return _context5.stop();
+                    }
+                  }
+                }, _callee5);
+              }));
+              return _setProfile.apply(this, arguments);
+            };
+
+            setProfile = function _ref9(_x3) {
+              return _setProfile.apply(this, arguments);
+            };
+
+            _postMessage = function _ref8() {
+              _postMessage = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee4(newMessage) {
+                return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                  while (1) {
+                    switch (_context4.prev = _context4.next) {
+                      case 0:
+                        messageObject = {
+                          message: newMessage
+                        };
+                        messageArray.push(messageObject);
+                        removeMessages();
+                        printMessages();
+                        _context4.next = 6;
+                        return project.post('/postMessage', {
+                          message: newMessage
+                        });
+
+                      case 6:
+                      case "end":
+                        return _context4.stop();
+                    }
+                  }
+                }, _callee4);
+              }));
+              return _postMessage.apply(this, arguments);
+            };
+
+            postMessage = function _ref7(_x2) {
+              return _postMessage.apply(this, arguments);
+            };
+
+            _formatMessages = function _ref6() {
+              _formatMessages = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee3() {
+                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        _context3.next = 2;
+                        return getMessages();
+
+                      case 2:
+                        messagesJSON = _context3.sent;
+                        messagesJSON.data.forEach(function (message) {
+                          messageArray.push(message);
+                        });
+                        printMessages();
+
+                      case 5:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }
+                }, _callee3);
+              }));
+              return _formatMessages.apply(this, arguments);
+            };
+
+            formatMessages = function _ref5() {
+              return _formatMessages.apply(this, arguments);
+            };
+
+            _getMessages = function _ref4() {
+              _getMessages = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee2() {
+                var allMessages;
+                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                  while (1) {
+                    switch (_context2.prev = _context2.next) {
+                      case 0:
+                        _context2.next = 2;
+                        return project.get('/events/Message');
+
+                      case 2:
+                        allMessages = _context2.sent;
+                        return _context2.abrupt("return", allMessages);
+
+                      case 4:
+                      case "end":
+                        return _context2.stop();
+                    }
+                  }
+                }, _callee2);
+              }));
+              return _getMessages.apply(this, arguments);
+            };
+
+            getMessages = function _ref3() {
+              return _getMessages.apply(this, arguments);
+            };
+
+            feed = document.getElementById('feed');
+            textArea = document.getElementById("textarea");
+            profileImage = document.getElementById("profile-image");
+            profileUsername = document.getElementById("user-name");
+            profilePosts = document.getElementById("number-of-posts");
+
+            document.getElementById("submitMessage").onclick = function () {
+              submitText();
+            }; // For this demo we set the user to user 0
 
 
-  currentUser = 0;
-  messages = []; // Get All Messages
+            currentUser = 0;
+            messageArray = [];
+            currentUserDisplayName = ''; // Get All Messages
 
-  function getMessages() {
-    var allMessages = project.get('/events/Message').then(function (message) {
-      return message.data;
-    });
-    return allMessages;
-  } // Format Messages into message array and Print
+            _context8.next = 26;
+            return printProfile(currentUser);
 
+          case 26:
+            formatMessages();
 
-  function formatMessages(unformatedMessages) {
-    unformatedMessages.then(function (value) {
-      value.forEach(function (message) {
-        messages.push(message);
-      });
-    }).then(function () {
-      printMessages(messages);
-    });
-  } // Set message
-
-
-  function postMessage(_x) {
-    return _postMessage.apply(this, arguments);
-  } // Set Profile
-
-
-  function _postMessage() {
-    _postMessage = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee2(newMessage) {
-      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return project.post('/postMessage', {
-                message: newMessage
-              }).then(function () {
-                removeMessages();
-                messages = [];
-                updatedMessages = getMessages();
-                formatMessages(updatedMessages);
-              });
-
-            case 2:
-            case "end":
-              return _context2.stop();
-          }
+          case 27:
+          case "end":
+            return _context8.stop();
         }
-      }, _callee2);
-    }));
-    return _postMessage.apply(this, arguments);
-  }
+      }
+    }, _callee8);
+  }));
 
-  function setProfile(_x2) {
-    return _setProfile.apply(this, arguments);
-  } // run this once to set up your profile
-  // setProfile(0);
-  // Get the profile data based on ID and update profile
-
-
-  function _setProfile() {
-    _setProfile = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee3(idOfProfile) {
-      var profilePost;
-      return regeneratorRuntime.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              // Set some profile settings for the demo
-              profilePost = {
-                "id": idOfProfile,
-                "displayName": "Mason Link",
-                "avatarUrl": 'https://blockmason.link/wp-content/uploads/2019/04/download.jpg'
-              };
-              _context3.next = 3;
-              return project.post('/setProfile', profilePost);
-
-            case 3:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-    return _setProfile.apply(this, arguments);
-  }
-
-  function getProfile(userID) {
-    return new Promise(function (resolve) {
-      resolve(project.get('/getProfile', {
-        "id": userID
-      }));
-    });
-  } // Print profile data to profile
-
-
-  function printProfile() {
-    return _printProfile.apply(this, arguments);
-  } // Format for message element
-
-
-  function _printProfile() {
-    _printProfile = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee4() {
-      var profileData, profileDisplayName;
-      return regeneratorRuntime.wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              _context4.next = 2;
-              return getProfile(currentUser);
-
-            case 2:
-              profileData = _context4.sent;
-              profileDisplayName = document.createTextNode(profileData.displayName);
-              profileImage.style.cssText = "background-image: url(" + profileData.avatarUrl + ")";
-              profileUsername.appendChild(profileDisplayName);
-
-            case 6:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4);
-    }));
-    return _printProfile.apply(this, arguments);
-  }
-
-  function printMessages() {
-    //Update the number of posts
-    profilePosts.innerText = "Number of Posts: " + messages.length;
-    messages.forEach(
-    /*#__PURE__*/
-    function () {
-      var _ref = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee(message) {
-        var messageUserData, messageUser, messageText, divElement, pElement, messagesFormated;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return getProfile(message.senderId);
-
-              case 2:
-                messageUserData = _context.sent;
-                messageUser = document.createTextNode(messageUserData.displayName);
-                messageText = document.createTextNode('"' + message.message + '" — ');
-                divElement = document.createElement("DIV");
-                pElement = document.createElement("P");
-                messagesFormated = divElement.appendChild(pElement);
-                messagesFormated.appendChild(messageText);
-                messagesFormated.appendChild(messageUser);
-                feed.appendChild(messagesFormated);
-
-              case 11:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      return function (_x3) {
-        return _ref.apply(this, arguments);
-      };
-    }());
-  } // Clear existing messages
-
-
-  function removeMessages() {
-    console.log('Cleared All Messages');
-
-    while (feed.firstChild) {
-      feed.removeChild(feed.firstChild);
-    }
-  } // The function to submit text from textArea
-
-
-  function submitText() {
-    if (textArea.value.trim() != "") {
-      messageObject = textArea.value.trim();
-      postMessage(messageObject);
-      textArea.value = "";
-    }
-  } //Initialization
-
-
-  printProfile(currentUser);
-  var startingMessages = getMessages();
-  formatMessages(startingMessages);
-});
-},{"dotenv":"node_modules/dotenv/lib/main.js","@blockmason/link-sdk":"node_modules/@blockmason/link-sdk/index.js","node-fetch":"node_modules/node-fetch/browser.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}());
+},{"dotenv":"node_modules/dotenv/lib/main.js","@blockmason/link-sdk":"node_modules/@blockmason/link-sdk/index.js","node-fetch":"node_modules/node-fetch/browser.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -8396,7 +8477,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63497" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65167" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -8427,8 +8508,9 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else {
-        window.location.reload();
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
       }
     }
 
@@ -8571,5 +8653,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/Social-Network.e31bb0bc.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/social-network-demo.e31bb0bc.js.map

@@ -13,5 +13,8 @@
     "@blockmason/link-sdk": "^0.1.4",
     "dotenv": "^8.0.0",
     "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
   }
 }
